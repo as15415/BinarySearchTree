@@ -22,8 +22,8 @@ public class Test {
 		
 		BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>(root);
 		
-		tree.insert(5, root);
-		tree.delete(5, root);
+		System.out.println(tree.insert(5, root).getElement() + "\n");
+		
 		tree.inOrder(root);
 	}
 	

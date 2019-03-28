@@ -23,26 +23,40 @@ public class BinarySearchTree<T extends Comparable<T>> extends LinkedBinaryTree<
 			return node;
 	}
 	
-	public void insert(T key, BinaryTreeNode<T> node) {
-		if(super.isEmpty())
-			super.setRoot(new BinaryTreeNode<T>(key));
+	public BinaryTreeNode<T> insert(T key, BinaryTreeNode<T> node) {
+		if(super.isEmpty()) {
+			BinaryTreeNode<T> insertedNode = new BinaryTreeNode<T>(key);
+			super.setRoot(insertedNode);
+			
+			return insertedNode;
+		}
 		
 		else if(key.compareTo(node.getElement()) < 0) {
-			if(node.getLeftChild() == null)
-				node.setLeftChild(new BinaryTreeNode<T>(key));
+			if(node.getLeftChild() == null) {
+				BinaryTreeNode<T> insertedNode = new BinaryTreeNode<T>(key);
+				node.setLeftChild(insertedNode);
+				
+				return insertedNode;
+			}
+			
 			else
-				insert(key, node.getLeftChild());
+				return insert(key, node.getLeftChild());
 		}
 
 		else { // key.compareTo(node.getElement()) > 0
-			if(node.getRightChild() == null)
-				node.setRightChild(new BinaryTreeNode<T>(key));
+			if(node.getRightChild() == null) {
+				BinaryTreeNode<T> insertedNode = new BinaryTreeNode<T>(key);
+				node.setRightChild(insertedNode);
+				
+				return insertedNode;
+			}
+			
 			else
-				insert(key, node.getRightChild());
+				return insert(key, node.getRightChild());
 		}
 	}
 	
-	// Consider making this more concise?!
+	// Consider making this more concise?! (If possible)
 	public void delete(T key, BinaryTreeNode<T> node) {
 		BinaryTreeNode<T> toDelete = search(key, node);
 		
