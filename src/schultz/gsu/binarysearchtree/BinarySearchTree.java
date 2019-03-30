@@ -24,6 +24,10 @@ public class BinarySearchTree<T extends Comparable<T>> extends LinkedBinaryTree<
 	}
 	
 	public BinaryTreeNode<T> insert(T key, BinaryTreeNode<T> node) {
+		return doInsert(key, node);
+	}
+	
+	private BinaryTreeNode<T> doInsert(T key, BinaryTreeNode<T> node) {
 		if(super.isEmpty()) {
 			BinaryTreeNode<T> insertedNode = new BinaryTreeNode<T>(key);
 			super.setRoot(insertedNode);
@@ -40,7 +44,7 @@ public class BinarySearchTree<T extends Comparable<T>> extends LinkedBinaryTree<
 			}
 			
 			else
-				return insert(key, node.getLeftChild());
+				return doInsert(key, node.getLeftChild());
 		}
 
 		else { // key.compareTo(node.getElement()) > 0
@@ -52,7 +56,7 @@ public class BinarySearchTree<T extends Comparable<T>> extends LinkedBinaryTree<
 			}
 			
 			else
-				return insert(key, node.getRightChild());
+				return doInsert(key, node.getRightChild());
 		}
 	}
 	
