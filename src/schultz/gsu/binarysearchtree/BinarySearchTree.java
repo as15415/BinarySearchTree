@@ -101,7 +101,7 @@ public class BinarySearchTree<T extends Comparable<T>> extends LinkedBinaryTree<
 		}
 	}
 	
-	private BinaryTreeNode<T> getRightMost(BinaryTreeNode<T> node) {
+	public BinaryTreeNode<T> getRightMost(BinaryTreeNode<T> node) {
 		if(node.getRightChild() == null)
 			return node;
 		
